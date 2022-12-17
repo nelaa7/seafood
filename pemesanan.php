@@ -2,7 +2,7 @@
 
 require_once ('db.php');
 
-Class pemesanan extends db
+Class pemesanan 
 {
     
     public function show()

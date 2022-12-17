@@ -1,5 +1,5 @@
 <?php 
-require_once ('db.php');
+//require_once ('db.php');
 require_once ('pemesanan.php');
 ?>
 
@@ -76,7 +76,7 @@ require_once ('pemesanan.php');
     </style>
 
   <!-- Custom styles for this template -->
-  <!--
+
   <link href="dashboard\css\dashboard.css" rel="stylesheet">
 </head>
 
@@ -114,31 +114,14 @@ require_once ('pemesanan.php');
                                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                                 Pesanan
                             </a>
-                        </li> 
-
+                        </li>
                     </ul>
-
                 </div>
             </nav>
-        </div>
-    </div>
-    -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
-    </script>
-    <script src="dashboard\js\dashboard.js"></script>
     
+    
+
+  
  
 <!--layout end-->
 
@@ -163,6 +146,7 @@ require_once ('pemesanan.php');
     <table class="table table-striped table-bordered table-sm">
         <thead>
             <tr>
+                <th scope="col">No.</th>
                 <th scope="col">Nomor Pemesanan</th>
                 <th scope="col">Nama Pegawai</th>
                 <th scope="col">Nama Konsumen</th>
@@ -176,7 +160,7 @@ require_once ('pemesanan.php');
             </tr>
         </thead>
         <tbody>
-            <?php  require_once 'db.php';
+            <?php  include 'db.php';
             require_once 'pemesanan.php';
             //$koneksi = mysqli_connect($host, $user, $password, $database);
 
@@ -186,31 +170,47 @@ require_once ('pemesanan.php');
            //     echo "Failed to connect to MySQL:" . mysqli_connect_error();
            // }
             
-            function getPosts() {
-                $query = mysqli_query($con,"SELECT * FROM pemesanan");
-                while($row = mysqli_fetch_array($query))
-                {
+                $no=1;
+                $ambildata = mysqli_query($koneksi,"SELECT * FROM pemesanan");
+                while($tampil = mysqli_fetch_array($ambildata)){
 
                 echo "<tr>";
-                echo '<td>' ,$value['id_pemesanan']. '</td>';
-                echo '<td>'  ,$value['id_pegawai']. '</td>';
-                echo '<td>' . $value['id_calon_konsumen']. '</td>';
-                echo '<td>' . $value['id_penawaram']. '</td>';
-                echo '<td>' . $value['tgl_pesanan']. '</td>';
-                echo '<td>' . $value['status_pemesanan']. '</td>';
-                echo '<td>' . $value['alamat_pengiriman']. '</td>';
-                echo '<td>' . $value['total harga']. '</td>';
+                echo '<td></td>';
+                echo '<td>'.$tampil['id_pemesanan']. '</td>';
+                echo '<td>'.$tampil['id_pegawai']. '</td>';
+                echo '<td>'.$tampil['id_calon_konsumen']. '</td>';
+                echo '<td>'.$tampil['id_penawaran']. '</td>';
+                echo '<td>'.$tampil['tgl_pemesanan']. '</td>';
+                echo '<td>'.$tampil['status_pemesanan']. '</td>';
+                echo '<td>'.$tampil['alamat_pengiriman']. '</td>';
+                echo '<td>'.$tampil['total_harga']. '</td>';
               '</tr>';
             $no++;
-            }}
+            }
             ?>
            
 
         </tbody>
     </table>
-    
+    </div>
+</div>
 </body>
 
 </html>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
+    </script>
+    <script src="dashboard\js\dashboard.js"></script>
+    
